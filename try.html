@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #div-container {
+
+    }
+
+    .div {
+      border: 1px solid green;
+      width: 40%;
+      height: 100px;
+    }
+
+    #dragAbleText {
+      margin-top: 4rem;
+      width: 40%;
+      height: 100px;
+
+    }
+
+    #dragAbleText p {
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2> Drag and Drop </h2>
+  <p> Drag the text below into the above empty div</p>
+
+  <div id="div-container" class="grid">
+
+  </div>
+
+
+  <script> 
+    const n = 6;
+    const container = document.querySelector('#div-container');
+    for (let i = 0; i < n; i++) {
+      const div = document.createElement("div");
+      div.id = `div ${i}`; 
+      div.className = "div";
+      container.appendChild(div);
+    }
+
+    const drag = (event) => {
+      event.dataTransfer.setData('text', event.target.id)
+    }
+
+    const dragEnd = (event) => {
+    }
+    const allowDrop = (event) => {
+      event.preventDefault();
+    }
+
+    const drop = (event) => {
+      event.preventDefault();
+      var data = event.dataTransfer.getData('text');
+      event.target.appendChild(document.getElementById(data));
+    }
+
+  </script>
+</body>
+</html>
