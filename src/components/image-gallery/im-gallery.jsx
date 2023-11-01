@@ -8,7 +8,7 @@ import fruit6 from "./assets/fruit6.jpg";
 import fruit7 from "./assets/fruit7.jpg";
 import fruit8 from "./assets/fruit8.jpg";
 import fruit9 from "./assets/fruit9.jpg";
-import fruit10 from "./assets/fruit10.jpg"; 
+import fruit10 from "./assets/fruit10.jpg";
 
 const Gallery = () => {
   const [items, setItems] = useState([
@@ -23,20 +23,29 @@ const Gallery = () => {
     { id: 9, content: fruit9 },
     { id: 10, content: fruit10 },
   ]);
+  const [Id, setId] = useState(null);
 
   const handleDrag = (e, itemId) => {
+    setId(e.target.id)
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setData("text/plain", itemId);
   };
 
-  const handleDrop = (e, targetItemId) => {
+  const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
-    const sourceItemId = e.dataTransfer.getData("text/plain");
+    // console.log("the e.target is", e.target);
+
+    const sourceItemId = Id
+    // console.log("the sourceItemId is", sourceItemId);
     const updatedItems = [...items];
 
-    const sourceItem = updatedItems.find((item) => item.id === parseInt(sourceItemId, 10));
-    const targetItem = updatedItems.find((item) => item.id === parseInt(targetItemId, 10));
+    const sourceItem = updatedItems.find(
+      (item) => item.id === parseInt(sourceItemId, 10)
+    );
+    const targetItem = updatedItems.find(
+      (item) => item.id === parseInt(targetItemId, 10)
+    );
 
     const sourceIndex = updatedItems.indexOf(sourceItem);
     const targetIndex = updatedItems.indexOf(targetItem);
@@ -47,7 +56,6 @@ const Gallery = () => {
       setItems(updatedItems);
     }
   };
-
   return (
     <div className="grid grid-flow-row grid-cols-4 p-5 text-center gap-1 max-sm:grid-cols-2 cursor-grab">
       {items.map((item, index) => (
@@ -56,15 +64,15 @@ const Gallery = () => {
           id={item.id}
           draggable
           onDragOver={(e) => {
-            e.preventDefault();
+            handleDragOver(e, item.id);
           }}
-          onDrop={(e) => handleDrop(e, item.id)}
+          // onDrop={(e) => handleDrop(e, item.id)}
           onDragStart={(e) => handleDrag(e, item.id)}
           className={`h-32 flex justify-center items-center border border-sky-500 bg-gray-800 ${
             index === 0 ? "col-span-2 row-span-2 h-[16.4rem]" : ""
           }`}
         >
-          <img src={item.content} alt="" />
+          <img id={item.id} src={item.content} alt="" />
         </div>
       ))}
     </div>

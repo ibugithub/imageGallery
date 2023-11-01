@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,19 @@
     }
 
     #div-container {
-
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
 
     .div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 1px solid green;
-      width: 40%;
+      width: 100px;
       height: 100px;
     }
 
@@ -29,9 +37,9 @@
     #dragAbleText p {
       cursor: pointer;
     }
-
   </style>
 </head>
+
 <body>
 
   <h2> Drag and Drop </h2>
@@ -42,32 +50,85 @@
   </div>
 
 
-  <script> 
-    const n = 6;
+  <script>
+    const n = 15;
+    let data = null;
+
+    const colors = [
+      'red',
+      'blue',
+      'green',
+      'yellow',
+      'orange',
+      'purple',
+      'pink',
+      'teal',
+      'cyan',
+      'gray',
+      'brown',
+      'lightblue',
+      'lime',
+      'indigo',
+    ];
+
     const container = document.querySelector('#div-container');
     for (let i = 0; i < n; i++) {
       const div = document.createElement("div");
-      div.id = `div ${i}`; 
+      div.id = `div ${i}`;
       div.className = "div";
+      div.draggable = true;
+      div.style.backgroundColor = colors[i % colors.length];
+
       container.appendChild(div);
+      const paragraph = document.createElement("p");
+      paragraph.textContent = `item ${i}`;
+      // div.appendChild(paragraph);
+
+      div.addEventListener("dragstart", (event) => {
+        handleDragStart(event);
+      });
+
+      div.addEventListener("dragover", (event) => {
+        handleDragOver(event);
+      });
+
+      div.addEventListener("drop", (event) => {
+        handleDrop(event);
+      });
+
     }
 
-    const drag = (event) => {
+    const handleDragStart = (event) => {
+      data = event.target.id
       event.dataTransfer.setData('text', event.target.id)
+      console.log('dragstart event called', event.target.id);
     }
 
-    const dragEnd = (event) => {
-    }
-    const allowDrop = (event) => {
+    const handleDragOver = (event) => {
+      console.log("========start========");
       event.preventDefault();
+      // var data = event.dataTransfer.getData('text');
+      console.log('the data is', data);
+      console.log('the parent element is', event.target.id);
+      console.log('the appended element is', data);
+      if (event.target.id !== data) {
+        event.target.appendChild(document.getElementById(data));
+      }
+
+      console.log('dragover event called and the event.target is', event.target);
+      console.log("========end=======");
     }
 
-    const drop = (event) => {
+    const handleDrop = (event) => {
       event.preventDefault();
       var data = event.dataTransfer.getData('text');
-      event.target.appendChild(document.getElementById(data));
+      console.log('drop event called and the event.target is ', event.target);
+      console.log('the data is ', data);
+      if (event.target !== document.getElementById(data)) {
+        event.target.appendChild(document.getElementById(data));  
+      }
     }
-
   </script>
 </body>
+
 </html>
