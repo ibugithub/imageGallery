@@ -9,3 +9,8 @@
   -webkit-user-drag: none;
   -khtml-user-drag: none;
 }
+
+img {
+  height: 100% !important;
+  width: 100% !important;
+}
