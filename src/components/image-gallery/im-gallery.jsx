@@ -25,12 +25,11 @@ const Gallery = () => {
   ]);
   const [Id, setId] = useState(null);
 
-  const handleDrag = (e, itemId) => {
+  const handleDrag = (e) => {
     setId(e.target.id)
     e.target.classList.add('dragging-image');
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setData("text/plain", itemId);
   };
 
   const handleDragOver = (e, targetItemId) => {
