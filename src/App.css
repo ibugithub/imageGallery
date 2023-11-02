@@ -6,14 +6,24 @@
 }
 
 img {
-  height: 100% !important;
-  width: 100% !important;
+  height: 100% !important;  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5%;
 }
 
 
-.dragging-image {
-  opacity: 0.6;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  z-index: 2; 
-  transition: opacity 0.2s ease;
+.dragging-div {
+  opacity: 0;
+  height: 8rem !important;
+  width: 12rem !important;
+  box-shadow: 10px 10px 10px rgba(247, 233, 233, 0.3);
+  transition: opacity 0.5s ease;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'myArea myArea myArea myArea myArea';
+  gap: 2rem;
+  background-color: white;
+  padding: 10px;
 }

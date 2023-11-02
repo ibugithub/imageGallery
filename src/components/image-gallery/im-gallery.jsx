@@ -12,10 +12,10 @@ import fruit10 from "./assets/fruit10.jpg";
 
 const Gallery = () => {
   const [items, setItems] = useState([
-    { id: 1, content: fruit1 },
+    { id: 1, content: fruit4 },
     { id: 2, content: fruit2 },
     { id: 3, content: fruit3 },
-    { id: 4, content: fruit4 },
+    { id: 4, content: fruit1 },
     { id: 5, content: fruit5 },
     { id: 6, content: fruit6 },
     { id: 7, content: fruit7 },
@@ -24,20 +24,20 @@ const Gallery = () => {
     { id: 10, content: fruit10 },
   ]);
   const [Id, setId] = useState(null);
+  const [dragItem, setDragItem] = useState(null);
 
   const handleDrag = (e) => {
+    console.log('handleDrag called and the target element is', e.target );
     setId(e.target.id)
-    e.target.classList.add('dragging-image');
+    setDragItem(e.target)
+    e.target.classList.add('dragging-div');
     e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.dropEffect = "move";
   };
 
   const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
-    // console.log("the e.target is", e.target);
-
+    dragItem.classList.add('dragging-div');
     const sourceItemId = Id
-    // console.log("the sourceItemId is", sourceItemId);
     const updatedItems = [...items];
 
     const sourceItem = updatedItems.find(
@@ -51,6 +51,7 @@ const Gallery = () => {
     const targetIndex = updatedItems.indexOf(targetItem);
 
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
+      console.log('DragOver called and the target element is', targetItemId );
       updatedItems.splice(sourceIndex, 1);
       updatedItems.splice(targetIndex, 0, sourceItem);
       setItems(updatedItems);
@@ -58,27 +59,27 @@ const Gallery = () => {
   };
 
   const handleDragEnd = (e) => {
-    e.target.classList.remove('dragging-image');
+    e.target.classList.remove('dragging-div');
   };
 
   return (
-    <div className="grid grid-flow-row grid-cols-4 p-5 text-center gap-1 max-sm:grid-cols-2 cursor-grab">
+    <div draggable={false} className="p-5 grid-container text-center  cursor-grab">
       {items.map((item, index) => (
         <div
+          draggable={true}
           key={item.id}
           id={item.id}
-          draggable
           onDragOver={(e) => {
             handleDragOver(e, item.id);
           }}
-          // onDrop={(e) => handleDrop(e, item.id)}
           onDragStart={(e) => handleDrag(e, item.id)}
-          onDragEnd={handleDragEnd}
-          className={`h-32 flex justify-center items-center border border-sky-500 bg-gray-800 ${
-            index === 0 ? "col-span-2 row-span-2 h-[16.4rem]" : ""
-          }`}
+          onDragEnd={handleDragEnd} 
+          className={` ${index == 0 ? 'firstItem' : "" } h-32 justify-center items-center`}
         >
-          <img id={item.id} src={item.content} alt="" draggable={false} />
+          <img
+          src={item.content} alt=""
+          draggable={false}
+          />
         </div>
       ))}
     </div>
@@ -86,3 +87,6 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+
+// ${index == 1 ? 'firstItem' : "" }
