@@ -27,6 +27,7 @@ const Gallery = () => {
 
   const handleDrag = (e, itemId) => {
     setId(e.target.id)
+    e.target.classList.add('dragging-image');
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setData("text/plain", itemId);
@@ -56,6 +57,11 @@ const Gallery = () => {
       setItems(updatedItems);
     }
   };
+
+  const handleDragEnd = (e) => {
+    e.target.classList.remove('dragging-image');
+  };
+
   return (
     <div className="grid grid-flow-row grid-cols-4 p-5 text-center gap-1 max-sm:grid-cols-2 cursor-grab">
       {items.map((item, index) => (
@@ -68,11 +74,12 @@ const Gallery = () => {
           }}
           // onDrop={(e) => handleDrop(e, item.id)}
           onDragStart={(e) => handleDrag(e, item.id)}
+          onDragEnd={handleDragEnd}
           className={`h-32 flex justify-center items-center border border-sky-500 bg-gray-800 ${
             index === 0 ? "col-span-2 row-span-2 h-[16.4rem]" : ""
           }`}
         >
-          <img id={item.id} src={item.content} alt="" />
+          <img id={item.id} src={item.content} alt="" draggable={false} />
         </div>
       ))}
     </div>
