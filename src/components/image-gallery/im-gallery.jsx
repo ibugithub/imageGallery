@@ -27,7 +27,6 @@ const Gallery = () => {
   const [dragItem, setDragItem] = useState(null);
 
   const handleDrag = (e) => {
-    console.log("handleDrag called and the target element is", e.target);
     setDragItem(e.target); 
     if (e.target.classList.contains ("firstItem")) {
       e.target.classList.add('first-to-other');
@@ -37,7 +36,6 @@ const Gallery = () => {
 
   const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
-    console.log("DragOver called and the target element is", targetItemId);
     dragItem.classList.add("dragging-div");
     const sourceItemId = dragItem.id;
     const updatedItems = [...items];
@@ -55,7 +53,6 @@ const Gallery = () => {
     console.log('targetIndex: ', targetIndex);
 
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
-      console.log("DragOver on matched. the target element is", targetItemId);
       updatedItems.splice(sourceIndex, 1);
       updatedItems.splice(targetIndex, 0, sourceItem);
       setItems(updatedItems);
@@ -63,7 +60,6 @@ const Gallery = () => {
   };
 
   const handleDragEnd = (e) => {
-    console.log("DragEnd called. the e.target element is", e.target);
     e.target.classList.remove("dragging-div");
     e.target.classList.remove("first-to-other");
     e.target.classList.remove("other-to-first");
