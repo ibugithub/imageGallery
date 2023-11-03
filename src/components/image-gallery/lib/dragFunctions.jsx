@@ -1,3 +1,5 @@
+// This moudle is for handling all the drag and drop operations
+
 import itemData from "./items";
 import { useState } from "react";
 

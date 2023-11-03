@@ -1,3 +1,5 @@
+// This moudle is for importing all the assets 
+
 import fruit1 from "../assets/fruit1.jpg";
 import fruit2 from "../assets/fruit2.jpg";
 import fruit3 from "../assets/fruit3.jpg";

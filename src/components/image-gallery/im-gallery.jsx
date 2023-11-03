@@ -6,7 +6,7 @@ const Gallery = () => {
   return (
     <div
       draggable={false}
-      className="p-28 grid grid-cols-5 grid-flow-row gap-6 text-center max-sm:grid-cols-2 max-sm:p-10 cursor-grab"
+      className="p-20 grid grid-cols-5 grid-flow-row gap-6 text-center max-sm:grid-cols-2 max-sm:p-10 cursor-pointer "
     >
       {items.map((item, index) => (
         <div
@@ -20,7 +20,7 @@ const Gallery = () => {
           onDragEnd={(e) => handleDragEnd(e)}
           className={`${
             index == 0 ? "col-span-2 row-span-2 firstItem" : ""
-          } flex justify-center items-center`}
+          } flex justify-center items-center image-container`}
         >
           <img src={item.content} alt="" draggable={false} />
         </div>
