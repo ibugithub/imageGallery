@@ -8,10 +8,14 @@ const Gallery = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   // const [unHoveredItem, setUnHoveredItem] = useState(null);
 
-  const unHover = (id) => {
-    console.log(document.querySelector(`#hhh`));
-    // item.classList.remove("empty-checkbox");
-  }
+  const unHover = () => {
+    const checkedItem = document.querySelector("empty-checkbox");
+    if (checkedItem != null) {
+      document
+        .querySelector(`.empty-checkbox`)
+        .classList.remove("empty-checkbox");
+    }
+  };
 
   const handleClick = (item) => {
     setClickedItem(item);
@@ -27,16 +31,16 @@ const Gallery = () => {
           draggable={true}
           key={item.id}
           id={item.id}
+          className={`${
+            index === 0 ? "col-span-2 row-span-2 firstItem" : ""
+          } flex justify-center items-center card-container relative`}
           onDragOver={(e) => {
             handleDragOver(e, item.id);
           }}
           onDragStart={(e) => handleDrag(e, item.id)}
           onDragEnd={(e) => handleDragEnd(e)}
-          className={`${
-            index === 0 ? "col-span-2 row-span-2 firstItem" : ""
-          } flex justify-center items-center card-container relative`}
           onMouseEnter={() => setHoveredItem(item)}
-          onMouseLeave={() => unHover(item.id)}
+          onMouseLeave={() => unHover()}
         >
           {/* <div
             draggable={false}
@@ -44,7 +48,9 @@ const Gallery = () => {
             onClick={() => handleClick(item)}
           > */}
           <img src={item.content} alt="" draggable={false} />
-          <div className={`${hoveredItem === item ? "empty-checkbox" : ""} }`}></div>  
+          <div
+            className={`${hoveredItem === item ? "empty-checkbox" : ""}`}
+          ></div>
 
           {/* </div> */}
         </div>
