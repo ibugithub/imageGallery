@@ -12,16 +12,16 @@ import fruit9 from "../assets/fruit9.jpg";
 import fruit10 from "../assets/fruit10.jpg";
 
 const itemData = [
-  { id: 1, content: fruit4 },
-  { id: 2, content: fruit2 },
-  { id: 3, content: fruit3 },
-  { id: 4, content: fruit1 },
-  { id: 5, content: fruit5 },
-  { id: 6, content: fruit6 },
-  { id: 7, content: fruit7 },
-  { id: 8, content: fruit8 },
-  { id: 9, content: fruit9 },
-  { id: 10, content: fruit10 },
+  { id: 'f1', content: fruit4 },
+  { id: 'f2', content: fruit2 },
+  { id: 'f3', content: fruit3 },
+  { id: 'f4', content: fruit1 },
+  { id: 'f5', content: fruit5 },
+  { id: 'f6', content: fruit6 },
+  { id: 'f7', content: fruit7 },
+  { id: 'f8', content: fruit8 },
+  { id: 'f9', content: fruit9 },
+  { id: 'f10', content: fruit10 },
 ];
 
 export default itemData;

@@ -22,10 +22,10 @@ export const DragFunctions = () => {
     const updatedItems = [...items];
 
     const sourceItem = updatedItems.find(
-      (item) => item.id === parseInt(sourceItemId, 10)
+      (item) => item.id === sourceItemId
     );
     const targetItem = updatedItems.find(
-      (item) => item.id === parseInt(targetItemId, 10)
+      (item) => item.id === targetItemId
     );
     const sourceIndex = updatedItems.indexOf(sourceItem);
     const targetIndex = updatedItems.indexOf(targetItem);
