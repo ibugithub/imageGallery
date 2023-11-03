@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./im-gallery.css"
 import fruit1 from "./assets/fruit1.jpg";
 import fruit2 from "./assets/fruit2.jpg";
 import fruit3 from "./assets/fruit3.jpg";
@@ -71,7 +72,7 @@ const Gallery = () => {
   return (
     <div
       draggable={false}
-      className="p-28 grid grid-cols-4 grid-flow-row gap-6 text-center  cursor-grab"
+      className="p-28 grid grid-cols-5 grid-flow-row gap-6 text-center max-sm:grid-cols-2 max-sm:p-5  cursor-grab"
     >
       {items.map((item, index) => (
         <div
