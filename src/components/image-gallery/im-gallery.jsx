@@ -23,21 +23,20 @@ const Gallery = () => {
     { id: 9, content: fruit9 },
     { id: 10, content: fruit10 },
   ]);
-  const [Id, setId] = useState(null);
   const [dragItem, setDragItem] = useState(null);
 
   const handleDrag = (e) => {
-    console.log('handleDrag called and the target element is', e.target );
-    setId(e.target.id)
-    setDragItem(e.target)
-    e.target.classList.add('dragging-div');
+    console.log("handleDrag called and the target element is", e.target);
+    setDragItem(e.target); 
+    e.target.classList.add('first-to-other');
     e.dataTransfer.effectAllowed = "move";
   };
 
   const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
-    dragItem.classList.add('dragging-div');
-    const sourceItemId = Id
+    console.log("DragOver called and the target element is", targetItemId);
+    dragItem.classList.add("dragging-div");
+    const sourceItemId = dragItem.id;
     const updatedItems = [...items];
 
     const sourceItem = updatedItems.find(
@@ -51,19 +50,33 @@ const Gallery = () => {
     const targetIndex = updatedItems.indexOf(targetItem);
 
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
-      console.log('DragOver called and the target element is', targetItemId );
+      console.log("DragOver on matched. the target element is", targetItemId);
       updatedItems.splice(sourceIndex, 1);
       updatedItems.splice(targetIndex, 0, sourceItem);
       setItems(updatedItems);
     }
   };
 
+  const handleDragEnter = (e) => {
+    console.log("DragEnter called. the e.target element is", e);
+    // e.target.parent.classList.add('first-to-other');
+  };
+
   const handleDragEnd = (e) => {
-    e.target.classList.remove('dragging-div');
+    console.log("DragEnd called. the e.target element is", e.target);
+    e.target.classList.remove("dragging-div");
+    e.target.classList.remove("first-to-other");
+  };
+
+  const handleDragLeave = (e) => {
+    console.log("DragLeave called. the e.target element is", e.target);
   };
 
   return (
-    <div draggable={false} className="p-5 grid-container text-center  cursor-grab">
+    <div
+      draggable={false}
+      className="p-5 grid grid-cols-4 grid-flow-row gap-6 text-center  cursor-grab"
+    >
       {items.map((item, index) => (
         <div
           draggable={true}
@@ -73,13 +86,14 @@ const Gallery = () => {
             handleDragOver(e, item.id);
           }}
           onDragStart={(e) => handleDrag(e, item.id)}
-          onDragEnd={handleDragEnd} 
-          className={` ${index == 0 ? 'firstItem' : "" } h-32 justify-center items-center`}
+          // onDragEnter={(e) => handleDragEnter(e)}
+          onDragEnd={(e) => handleDragEnd(e)}
+          // onDragLeave={(e) => handleDragLeave(e)}
+          className={`${
+            index == 0 ? "col-span-2 row-span-2 firstItem" : ""
+          } flex justify-center items-center`}
         >
-          <img
-          src={item.content} alt=""
-          draggable={false}
-          />
+          <img src={item.content} alt="" draggable={false} />
         </div>
       ))}
     </div>
@@ -87,6 +101,5 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
 
 // ${index == 1 ? 'firstItem' : "" }
