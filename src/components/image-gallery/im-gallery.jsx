@@ -57,19 +57,10 @@ const Gallery = () => {
     }
   };
 
-  const handleDragEnter = (e) => {
-    console.log("DragEnter called. the e.target element is", e);
-    // e.target.parent.classList.add('first-to-other');
-  };
-
   const handleDragEnd = (e) => {
     console.log("DragEnd called. the e.target element is", e.target);
     e.target.classList.remove("dragging-div");
     e.target.classList.remove("first-to-other");
-  };
-
-  const handleDragLeave = (e) => {
-    console.log("DragLeave called. the e.target element is", e.target);
   };
 
   return (
@@ -86,9 +77,7 @@ const Gallery = () => {
             handleDragOver(e, item.id);
           }}
           onDragStart={(e) => handleDrag(e, item.id)}
-          // onDragEnter={(e) => handleDragEnter(e)}
           onDragEnd={(e) => handleDragEnd(e)}
-          // onDragLeave={(e) => handleDragLeave(e)}
           className={`${
             index == 0 ? "col-span-2 row-span-2 firstItem" : ""
           } flex justify-center items-center`}
@@ -101,5 +90,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-// ${index == 1 ? 'firstItem' : "" }
