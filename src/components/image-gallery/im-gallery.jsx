@@ -28,7 +28,9 @@ const Gallery = () => {
   const handleDrag = (e) => {
     console.log("handleDrag called and the target element is", e.target);
     setDragItem(e.target); 
-    e.target.classList.add('first-to-other');
+    if (e.target.classList.contains ("firstItem")) {
+      e.target.classList.add('first-to-other');
+    }
     e.dataTransfer.effectAllowed = "move";
   };
 
@@ -48,6 +50,8 @@ const Gallery = () => {
 
     const sourceIndex = updatedItems.indexOf(sourceItem);
     const targetIndex = updatedItems.indexOf(targetItem);
+    console.log('source index is ', sourceIndex);
+    console.log('targetIndex: ', targetIndex);
 
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
       console.log("DragOver on matched. the target element is", targetItemId);
@@ -61,12 +65,13 @@ const Gallery = () => {
     console.log("DragEnd called. the e.target element is", e.target);
     e.target.classList.remove("dragging-div");
     e.target.classList.remove("first-to-other");
+    e.target.classList.remove("other-to-first");
   };
 
   return (
     <div
       draggable={false}
-      className="p-5 grid grid-cols-4 grid-flow-row gap-6 text-center  cursor-grab"
+      className="p-28 grid grid-cols-4 grid-flow-row gap-6 text-center  cursor-grab"
     >
       {items.map((item, index) => (
         <div

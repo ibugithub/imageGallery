@@ -12,18 +12,14 @@ img {
 
 .dragging-div {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transform: scale(1) rotate(90deg);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .first-to-other {
   width: 90%;
 }
 
-  .first-to-other > img {
-    height: 8rem ;
-    width: 10rem;
-  }
-
-.other-to-first {
-
+.first-to-other > img {
+  height: 45% ;
 }
