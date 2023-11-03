@@ -3,19 +3,10 @@ import { useState } from "react";
 import { DragFunctions } from "./lib/dragFunctions";
 
 const Gallery = () => {
-  const { items, handleDrag, handleDragOver, handleDragEnd } = DragFunctions();
+  const { items, handleDrag, handleDragOver, handleDragEnd, UnHover } = DragFunctions();
   const [clickedItem, setClickedItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
   // const [unHoveredItem, setUnHoveredItem] = useState(null);
-
-  const unHover = () => {
-    const checkedItem = document.querySelector("empty-checkbox");
-    if (checkedItem != null) {
-      document
-        .querySelector(`.empty-checkbox`)
-        .classList.remove("empty-checkbox");
-    }
-  };
 
   const handleClick = (item) => {
     setClickedItem(item);
@@ -40,7 +31,7 @@ const Gallery = () => {
           onDragStart={(e) => handleDrag(e, item.id)}
           onDragEnd={(e) => handleDragEnd(e)}
           onMouseEnter={() => setHoveredItem(item)}
-          onMouseLeave={() => unHover()}
+          onMouseLeave={() => UnHover()}
         >
           {/* <div
             draggable={false}
