@@ -25,11 +25,8 @@ export const DragFunctions = () => {
     const targetItem = updatedItems.find(
       (item) => item.id === parseInt(targetItemId, 10)
     );
-
     const sourceIndex = updatedItems.indexOf(sourceItem);
     const targetIndex = updatedItems.indexOf(targetItem);
-    console.log('source index is ', sourceIndex);
-    console.log('targetIndex: ', targetIndex);
 
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
       updatedItems.splice(sourceIndex, 1);
