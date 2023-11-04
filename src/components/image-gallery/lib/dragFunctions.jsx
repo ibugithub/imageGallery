@@ -9,11 +9,15 @@ export const DragFunctions = () => {
   const [dragItem, setDragItem] = useState(null);
 
   const handleDrag = (e) => {
-    console.log ('the e.target is', e.target);
     e.target.children[0].classList.remove('img')
     RemoveClass('empty-checkbox');
     setDragItem(e.target);
     if (e.target.classList.contains("firstItem")) {
+      if (e.target.children[2].classList.contains("clicked")) {
+        e.target.children[2].classList.remove("clicked");
+        e.target.children[2].classList.add("hide");
+        e.target.children[2].classList.add("pickMe");
+      }
       e.target.classList.add("first-to-other");
     }
     e.dataTransfer.effectAllowed = "move";
@@ -41,6 +45,10 @@ export const DragFunctions = () => {
   const handleDragEnd = (e) => {
     RemoveClass('first-to-other dragging-div');
     e.target.children[0].classList.add('img')
+    if (e.target.children[2].classList.contains("pickMe")) {
+      e.target.children[2].classList.add("clicked");
+      e.target.children[2].classList.remove("hide");
+    }
   };
 
   return {

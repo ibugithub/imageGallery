@@ -10,10 +10,8 @@ const Gallery = () => {
   const handleClick = (item) => {
     const itemIndex = selectedItems.indexOf(item);
     if (itemIndex === -1) {
-      // Item is not selected, so add it to the list
       setSelectedItems([...selectedItems, item]);
     } else {
-      // Item is already selected, so remove it from the list
       const updatedItems = [...selectedItems];
       updatedItems.splice(itemIndex, 1);
       setSelectedItems(updatedItems);
@@ -43,18 +41,12 @@ const Gallery = () => {
             setHoveredItem(null);
           }}
         >
-          {/* <div
-            draggable={false}
-            className={`image-container relative h-full flex justify-center items-center ${clickedItem === item ? "clicked" : ""}`}
-            onClick={() => handleClick(item)}
-          > */}
           <img className="img cardImg" src={item.content} alt="" draggable={false} />
           <div
             className={`${hoveredItem === item.id ? "empty-checkbox" : ""}`}
             onClick={() => handleClick(item)}
           ></div>
           <img src={checkImg} alt="this is the check iamge" className={`${selectedItems.includes(item) ? "clicked" : "hide"}`} onClick={() => handleClick(item)} />
-          {/* </div> */}
         </div>
       ))}
     </div>
