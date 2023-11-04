@@ -58,7 +58,7 @@ const Gallery = () => {
             }}
           >
             <img
-              className={`cardImg ${index === items.length - 1 ? "h-[100px]" : "img" }`}
+              className={`cardImg ${index === items.length - 1 ? "max-h-[100px]" : "img" }`}
               src={item.content}
               alt=""
               draggable={false}

@@ -16,15 +16,15 @@ import add from "../assets/add.png";
 const itemData = [
   { id: 'f1', content: fruit6 },
   { id: 'f2', content: veg11 },
-  { id: 'f3', content: fruit3 },
-  { id: 'f4', content: fruit1 },
+  { id: 'f3', content: fruit9 },
+  { id: 'f4', content: fruit10 },
   { id: 'f5', content: fruit5 },
-  { id: 'f6', content: fruit4 },
+  { id: 'f6', content: fruit2 },
   { id: 'f7', content: fruit7 },
   { id: 'f8', content: fruit8 },
-  { id: 'f9', content: fruit9 },
-  { id: 'f10', content: fruit10 },
-  { id: 'f11', content: fruit2 },
+  { id: 'f9', content: fruit3 },
+  { id: 'f10', content: fruit1 },
+  { id: 'f11', content: fruit4 },
   { id:'f12', content: add },
 ];
 
