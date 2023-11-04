@@ -9,6 +9,7 @@ const Gallery = () => {
     DragFunctions();
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
+
   const handleClick = (item) => {
     const itemIndex = selectedItems.indexOf(item);
     if (itemIndex === -1) {
@@ -19,10 +20,15 @@ const Gallery = () => {
       setSelectedItems(updatedItems);
     }
   };
+
   const handleBin = () => {
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
     setSelectedItems([]);
+  };
+
+  const handleSelectAllItems = () => {
+    setSelectedItems(items.slice(0, items.length - 1));
   };
 
   return (
@@ -33,13 +39,22 @@ const Gallery = () => {
         } `}
       >
         <div className="selection-container flex gap-2  items-center font-serif relative">
-          <div className={`bg-gray w-5 rounded-sm  h-5 bg-[#adebbd]  ${selectedItems.length > 1 ? "" : ""}`}>
-            <img
-              src={checkImg}
-              alt="this is the check iamge"
-              className={`${selectedItems.length > 1 ? "absolute w-5 h-5" : "hide"}`}
-            />
-          </div>
+          <div
+            className={`${
+              selectedItems.length > 1
+                ? "hide"
+                : "bg-gray w-5 rounded-sm  h-5 bg-[#adebbd]"
+            }`}
+            onClick={handleSelectAllItems}
+          ></div>
+          <img
+            src={checkImg}
+            alt="this is the check iamge"
+            className={`${selectedItems.length > 1 ? " bg-[#adebbd] w-5 h-5" : "hide"}`}
+            onClick={() => {
+              setSelectedItems([]);
+            }}
+          />
 
           <div className="counter text-[#07110a]">{selectedItems.length}</div>
           <div className="msg text-[#43a05c] text-xl ">Images Selected</div>
