@@ -2,7 +2,6 @@
 
 import itemData from "./items";
 import { useState } from "react";
-import UnHover from "./unHover";
 
 export const DragFunctions = () => {
   const [items, setItems] = useState(itemData);
@@ -13,7 +12,6 @@ export const DragFunctions = () => {
     if (e.target.classList.contains("firstItem")) {
       e.target.classList.add("first-to-other");
     }
-    UnHover();
     e.dataTransfer.effectAllowed = "move";
   };
 
@@ -47,6 +45,5 @@ export const DragFunctions = () => {
     handleDrag,
     handleDragOver,
     handleDragEnd,
-    UnHover,
   };
 };
