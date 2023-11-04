@@ -53,6 +53,7 @@ export const DragFunctions = () => {
 
   return {
     items,
+    setItems,
     dragItem,
     handleDrag,
     handleDragOver,
