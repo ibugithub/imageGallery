@@ -30,7 +30,7 @@ const Gallery = () => {
   return (
     <>
       <div
-        className={` flex justify-between px-20 py-10 items-end ${
+        className={` flex justify-between px-20 pb-10 pt-5 items-end ${
           selectedItems <= 0 ? "invisible" : ""
         } `}
       >
