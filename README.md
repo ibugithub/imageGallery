@@ -97,9 +97,12 @@ The **Image Gallery Project** is a stunning and feature-rich beautiful web appli
 
 <!-- LIVE DEMO  -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Web Demo <a name="live-demo"></a>
 
 - Enjoy the live version of the app 👉🏽 [here](https://image-gallery-inky-psi.vercel.app/)
+
+## 🚀 Live Video Demo <a name="live-demo"></a>
+- [here]([https://image-gallery-inky-psi.vercel.app/](https://www.loom.com/share/dbb220e77bbe4d509cb2dadf6f9c5cb0?sid=46894ceb-5542-4e4e-9486-7c39a173d508)) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
