@@ -6,8 +6,6 @@ const Gallery = () => {
   const { items, handleDrag, handleDragOver, handleDragEnd, UnHover } = DragFunctions();
   const [clickedItem, setClickedItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
-  // const [unHoveredItem, setUnHoveredItem] = useState(null);
-  // console.log ("hovered item is " + hoveredItem);
   const handleClick = (item) => {
     setClickedItem(item);
   };
