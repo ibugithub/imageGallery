@@ -65,7 +65,7 @@ const Gallery = () => {
         </div>
         <div className="delete-button ">
           <img
-            className="h-10 cursor-pointer"
+            className="h-10 cursor-pointer animate-bounce"
             alt="delete button"
             src={bin}
             onClick={handleBin}
