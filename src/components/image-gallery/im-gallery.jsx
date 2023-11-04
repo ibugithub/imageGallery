@@ -45,7 +45,7 @@ const Gallery = () => {
                 ? "hide"
                 : "bg-gray w-5 rounded-sm  h-5 bg-[#adebbd]"
             }`}
-            onClick={handleSelectAllItems}
+            onClick={() => {setSelectedItems(items.slice(0, items.length - 1))}}
           ></div>
           <img
             src={checkImg}
