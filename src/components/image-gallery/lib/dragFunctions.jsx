@@ -34,7 +34,7 @@ export const DragFunctions = () => {
     const targetItem = updatedItems.find((item) => item.id === targetItemId);
     const sourceIndex = updatedItems.indexOf(sourceItem);
     const targetIndex = updatedItems.indexOf(targetItem);
-
+    if (targetIndex === items.length - 1) { return }
     if (sourceItem && targetItem && sourceIndex !== -1 && targetIndex !== -1) {
       updatedItems.splice(sourceIndex, 1);
       updatedItems.splice(targetIndex, 0, sourceItem);

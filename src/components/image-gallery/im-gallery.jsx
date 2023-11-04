@@ -5,7 +5,8 @@ import checkImg from "./assets/check.png";
 import bin from "./assets/box.png";
 
 const Gallery = () => {
-  const { items, setItems, handleDrag, handleDragOver, handleDragEnd } = DragFunctions();
+  const { items, setItems, handleDrag, handleDragOver, handleDragEnd } =
+    DragFunctions();
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
   const handleClick = (item) => {
@@ -18,21 +19,38 @@ const Gallery = () => {
       setSelectedItems(updatedItems);
     }
   };
-  const handleBin = () => { 
+  const handleBin = () => {
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
     setSelectedItems([]);
-  }
+  };
 
   return (
     <>
-      <div className= {` flex justify-between px-20 py-10 items-end ${selectedItems <= 0 ? "invisible" : ""} `}>
-        <div className="selection-container flex gap-1 text-xl">
-          <div className="counter text-[#41a3bb]">{selectedItems.length}</div>
-          <div className="msg text-[#d89365]">Images Selected</div>
+      <div
+        className={` flex justify-between px-20 py-10 items-end ${
+          selectedItems <= 0 ? "invisible" : ""
+        } `}
+      >
+        <div className="selection-container flex gap-2  items-center font-serif relative">
+          <div className={`bg-gray w-5 rounded-sm  h-5 bg-[#adebbd]  ${selectedItems.length > 1 ? "" : ""}`}>
+            <img
+              src={checkImg}
+              alt="this is the check iamge"
+              className={`${selectedItems.length > 1 ? "absolute w-5 h-5" : "hide"}`}
+            />
+          </div>
+
+          <div className="counter text-[#07110a]">{selectedItems.length}</div>
+          <div className="msg text-[#43a05c] text-xl ">Images Selected</div>
         </div>
         <div className="delete-button ">
-          <img className="h-10 cursor-pointer" alt="delete button" src={bin}  onClick={handleBin}/>
+          <img
+            className="h-10 cursor-pointer"
+            alt="delete button"
+            src={bin}
+            onClick={handleBin}
+          />
         </div>
       </div>
       <div
@@ -41,7 +59,7 @@ const Gallery = () => {
       >
         {items.map((item, index) => (
           <div
-          draggable={index === items.length -1 ? false : true}
+            draggable={index === items.length - 1 ? false : true}
             key={item.id}
             id={item.id}
             className={`${
@@ -58,13 +76,19 @@ const Gallery = () => {
             }}
           >
             <img
-              className={`cardImg ${index === items.length - 1 ? "max-h-[100px]" : "img" }`}
+              className={`cardImg ${
+                index === items.length - 1 ? "max-h-[100px]" : "img"
+              }`}
               src={item.content}
               alt=""
               draggable={false}
             />
             <div
-              className={`${hoveredItem === item.id && index !== items.length - 1 ? "empty-checkbox" : ""}`}
+              className={`${
+                hoveredItem === item.id && index !== items.length - 1
+                  ? "empty-checkbox"
+                  : ""
+              }`}
               onClick={() => handleClick(item)}
             ></div>
             <img
