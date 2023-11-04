@@ -4,11 +4,10 @@ import { DragFunctions } from "./lib/dragFunctions";
 import checkImg from "./assets/check.png";
 
 const Gallery = () => {
-  const { items, handleDrag, handleDragOver, handleDragEnd, RemoveClass } = DragFunctions();
+  const { items, handleDrag, handleDragOver, handleDragEnd} = DragFunctions();
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
   const handleClick = (item) => {
-    RemoveClass('empty-checkbox');
     const itemIndex = selectedItems.indexOf(item);
     if (itemIndex === -1) {
       // Item is not selected, so add it to the list
