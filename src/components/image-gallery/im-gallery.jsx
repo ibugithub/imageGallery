@@ -99,7 +99,7 @@ const Gallery = () => {
             }}
           >
             <img
-              className={`cardImg ${
+              className={`cardImg  ${
                 index === items.length - 1 ? "max-h-[100px]" : "img"
               }`}
               src={item.content}
