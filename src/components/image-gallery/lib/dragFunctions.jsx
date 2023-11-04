@@ -8,6 +8,7 @@ export const DragFunctions = () => {
   const [items, setItems] = useState(itemData);
   const [dragItem, setDragItem] = useState(null);
 
+  // this function will be triggered when the drag operation is started and handle the start of the drag operation
   const handleDrag = (e) => {
     e.target.children[0].classList.remove('img')
     RemoveClass('empty-checkbox');
@@ -23,6 +24,7 @@ export const DragFunctions = () => {
     e.dataTransfer.effectAllowed = "move";
   };
 
+// This function handles drag-over events
   const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
     RemoveClass('empty-checkbox');
@@ -42,6 +44,7 @@ export const DragFunctions = () => {
     }
   };
 
+  // This function handles the end of the drag operation
   const handleDragEnd = (e) => {
     RemoveClass('first-to-other dragging-div');
     e.target.children[0].classList.add('img')

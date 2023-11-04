@@ -1,3 +1,5 @@
+// This component will show the main image gallery
+
 import "./im-gallery.css";
 import { useState } from "react";
 import { DragFunctions } from "./lib/dragFunctions";
@@ -10,6 +12,7 @@ const Gallery = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
 
+ // Function to handle selecting/deselecting an item
   const handleClick = (item) => {
     const itemIndex = selectedItems.indexOf(item);
     if (itemIndex === -1) {
@@ -21,6 +24,7 @@ const Gallery = () => {
     }
   };
 
+  // Function to handle deleting selected items
   const handleBin = () => {
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
