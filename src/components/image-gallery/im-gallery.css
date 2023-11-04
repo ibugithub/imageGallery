@@ -1,5 +1,5 @@
 .cardImg {
-  height: 100% !important;  
+  height: 100%;  
   border-radius: 5%;
   filter: drop-shadow(2px 4px 6px black);
 }

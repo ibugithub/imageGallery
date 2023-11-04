@@ -19,7 +19,6 @@ const Gallery = () => {
     }
   };
   const handleBin = () => { 
-    console.log("handleBin clicked and selected items are: ", selectedItems);
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
     setSelectedItems([]);
@@ -42,11 +41,11 @@ const Gallery = () => {
       >
         {items.map((item, index) => (
           <div
-            draggable={true}
+          draggable={index === items.length -1 ? false : true}
             key={item.id}
             id={item.id}
             className={`${
-              index === 0 ? "col-span-2 row-span-2 firstItem" : ""
+              index === 0 ? "col-span-2 row-span-2 firstItem " : ""
             } flex justify-center items-center card-container relative`}
             onDragOver={(e) => {
               handleDragOver(e, item.id);
@@ -59,13 +58,13 @@ const Gallery = () => {
             }}
           >
             <img
-              className="img cardImg"
+              className={`cardImg ${index === items.length - 1 ? "h-[100px]" : "img" }`}
               src={item.content}
               alt=""
               draggable={false}
             />
             <div
-              className={`${hoveredItem === item.id ? "empty-checkbox" : ""}`}
+              className={`${hoveredItem === item.id && index !== items.length - 1 ? "empty-checkbox" : ""}`}
               onClick={() => handleClick(item)}
             ></div>
             <img
