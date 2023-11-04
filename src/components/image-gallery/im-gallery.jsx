@@ -3,7 +3,7 @@ import { useState } from "react";
 import { DragFunctions } from "./lib/dragFunctions";
 
 const Gallery = () => {
-  const { items, handleDrag, handleDragOver, handleDragEnd} = DragFunctions();
+  const { items, handleDrag, handleDragOver, handleDragEnd, UnHover } = DragFunctions();
   const [clickedItem, setClickedItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
   // const [unHoveredItem, setUnHoveredItem] = useState(null);
@@ -31,7 +31,7 @@ const Gallery = () => {
           onDragStart={(e) => handleDrag(e, item.id)}
           onDragEnd={(e) => handleDragEnd(e)}
           onMouseEnter={() => setHoveredItem(item.id)}
-          onMouseLeave={() => { setHoveredItem(null);}}
+          onMouseLeave={() => { UnHover(); setHoveredItem(null);}}
         >
           {/* <div
             draggable={false}
