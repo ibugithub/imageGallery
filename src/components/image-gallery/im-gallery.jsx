@@ -27,10 +27,6 @@ const Gallery = () => {
     setSelectedItems([]);
   };
 
-  const handleSelectAllItems = () => {
-    setSelectedItems(items.slice(0, items.length - 1));
-  };
-
   return (
     <>
       <div
@@ -45,12 +41,16 @@ const Gallery = () => {
                 ? "hide"
                 : "bg-gray w-5 rounded-sm  h-5 bg-[#adebbd]"
             }`}
-            onClick={() => {setSelectedItems(items.slice(0, items.length - 1))}}
+            onClick={() => {
+              setSelectedItems(items.slice(0, items.length - 1));
+            }}
           ></div>
           <img
             src={checkImg}
             alt="this is the check iamge"
-            className={`${selectedItems.length > 1 ? " bg-[#adebbd] w-5 h-5" : "hide"}`}
+            className={`${
+              selectedItems.length > 1 ? " bg-[#adebbd] w-5 h-5" : "hide"
+            }`}
             onClick={() => {
               setSelectedItems([]);
             }}
@@ -79,7 +79,8 @@ const Gallery = () => {
             id={item.id}
             className={`${
               index === 0 ? "col-span-2 row-span-2 firstItem " : ""
-            } flex justify-center items-center card-container relative`}
+            } flex justify-center items-center card-container relative ${
+              items.length === 1 ? "animate-bounce" : ""} `}
             onDragOver={(e) => {
               handleDragOver(e, item.id);
             }}
@@ -88,6 +89,13 @@ const Gallery = () => {
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => {
               setHoveredItem(null);
+            }}
+            onClick={() => {
+              if (items.length === 1) {
+                console.log('last item clicked', items);
+                setSelectedItems(items.slice(0, items.length - 1));
+                window.location.reload();
+              }
             }}
           >
             <img
