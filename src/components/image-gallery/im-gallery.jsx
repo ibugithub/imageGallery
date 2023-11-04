@@ -70,7 +70,7 @@ const Gallery = () => {
       </div>
       <div
         draggable={false}
-        className="px-20 grid grid-cols-5 grid-flow-row gap-6 text-center max-sm:grid-cols-2 max-sm:p-10 cursor-pointer"
+        className="px-20 grid grid-cols-5 grid-flow-row gap-6 text-center max-sm:grid-cols-2 max-sm:p-10 cursor-pointer pb-40"
       >
         {items.map((item, index) => (
           <div
