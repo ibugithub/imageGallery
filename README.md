@@ -21,15 +21,9 @@
 
 The **Image Gallery Project** is a stunning and feature-rich beautiful web application designed to help you manage, showcase, and interact with your image collections. Who loves visual content, this gallery offers a delightful and interactive way to present your work.
 
-## 🛠 Built With <a name="built-with"></a>
-
-### Tech Stack <a name="tech-stack"></a>
-### Built With <a name="built-with"></a>
-
 #### Tech Stack <a name="tech-stack"></a>
 
-<details>
-  <summary>Client</summary>
+  Client:
   <br>
   <ul>
     <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
@@ -62,7 +56,6 @@ The **Image Gallery Project** is a stunning and feature-rich beautiful web appli
     <br>
 
   </ul>
-</details>
 
 
 #### Key Features <a name="key-features"></a>
