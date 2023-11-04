@@ -1,14 +1,9 @@
-img {
+.cardImg {
   height: 100% !important;  
   border-radius: 5%;
   filter: drop-shadow(2px 4px 6px black);
 }
-
-.card-container:hover {
-  /* filter: brightness(0.4); */
-}
-
-img:hover {
+.img:hover, .empty-checkbox:hover {
   filter: brightness(0.4);  
   transform: scale(1.1);
   transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
@@ -29,11 +24,32 @@ img:hover {
   height: 45% !important;
 }
 
-.empty-checkbox{
+.empty-checkbox, .clicked{
+  border-radius: 30%;
   width: 1.3rem;
   height: 1.3rem;
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  position: absolute !important;
+  top: 4px;
+  left: 4px;
   background-color: white;
 }
+
+.clicked-checkbox{
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: green;
+  pointer-events: none;
+}
+.hide {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* .clicked img{
+  height: .3rem;
+} */

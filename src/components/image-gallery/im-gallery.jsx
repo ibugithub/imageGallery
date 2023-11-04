@@ -1,13 +1,24 @@
 import "./im-gallery.css";
 import { useState } from "react";
 import { DragFunctions } from "./lib/dragFunctions";
+import checkImg from "./assets/check.png";
 
 const Gallery = () => {
-  const { items, handleDrag, handleDragOver, handleDragEnd, UnHover } = DragFunctions();
-  const [clickedItem, setClickedItem] = useState(null);
+  const { items, handleDrag, handleDragOver, handleDragEnd, RemoveClass } = DragFunctions();
+  const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
   const handleClick = (item) => {
-    setClickedItem(item);
+    RemoveClass('empty-checkbox');
+    const itemIndex = selectedItems.indexOf(item);
+    if (itemIndex === -1) {
+      // Item is not selected, so add it to the list
+      setSelectedItems([...selectedItems, item]);
+    } else {
+      // Item is already selected, so remove it from the list
+      const updatedItems = [...selectedItems];
+      updatedItems.splice(itemIndex, 1);
+      setSelectedItems(updatedItems);
+    }
   };
 
   return (
@@ -29,17 +40,21 @@ const Gallery = () => {
           onDragStart={(e) => handleDrag(e, item.id)}
           onDragEnd={(e) => handleDragEnd(e)}
           onMouseEnter={() => setHoveredItem(item.id)}
-          onMouseLeave={() => { UnHover(); setHoveredItem(null);}}
+          onMouseLeave={() => {
+            setHoveredItem(null);
+          }}
         >
           {/* <div
             draggable={false}
             className={`image-container relative h-full flex justify-center items-center ${clickedItem === item ? "clicked" : ""}`}
             onClick={() => handleClick(item)}
           > */}
-          <img src={item.content} alt="" draggable={false} />
+          <img className="img cardImg" src={item.content} alt="" draggable={false} />
           <div
             className={`${hoveredItem === item.id ? "empty-checkbox" : ""}`}
+            onClick={() => handleClick(item)}
           ></div>
+          <img src={checkImg} alt="this is the check iamge" className={`${selectedItems.includes(item) ? "clicked" : "hide"}`} onClick={() => handleClick(item)} />
           {/* </div> */}
         </div>
       ))}

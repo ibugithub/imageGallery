@@ -2,23 +2,26 @@
 
 import itemData from "./items";
 import { useState } from "react";
-import UnHover from "./unHover";
+import RemoveClass from "./removeClass";
 
 export const DragFunctions = () => {
   const [items, setItems] = useState(itemData);
   const [dragItem, setDragItem] = useState(null);
 
   const handleDrag = (e) => {
+    console.log ('the e.target is', e.target);
+    e.target.children[0].classList.remove('img')
+    RemoveClass('empty-checkbox');
     setDragItem(e.target);
     if (e.target.classList.contains("firstItem")) {
       e.target.classList.add("first-to-other");
     }
-    UnHover();
     e.dataTransfer.effectAllowed = "move";
   };
 
   const handleDragOver = (e, targetItemId) => {
     e.preventDefault();
+    RemoveClass('empty-checkbox');
     dragItem.classList.add("dragging-div");
     const sourceItemId = dragItem.id;
     const updatedItems = [...items];
@@ -36,9 +39,8 @@ export const DragFunctions = () => {
   };
 
   const handleDragEnd = (e) => {
-    e.target.classList.remove("dragging-div");
-    e.target.classList.remove("first-to-other");
-    e.target.classList.remove("other-to-first");
+    RemoveClass('first-to-other dragging-div');
+    e.target.children[0].classList.add('img')
   };
 
   return {
@@ -47,6 +49,6 @@ export const DragFunctions = () => {
     handleDrag,
     handleDragOver,
     handleDragEnd,
-    UnHover,
+    RemoveClass,
   };
 };
