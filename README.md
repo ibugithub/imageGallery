@@ -9,7 +9,8 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
+  - [🚀 Live Website Demo](#live-demo)
+  -  [▶️ video Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -113,7 +114,7 @@ different screen sizes. It shows two columns on smaller screens.<br>
 
 - Enjoy the live version of the app 👉🏽 [here](https://image-gallery-inky-psi.vercel.app/)
 
-## 🚀 Video Demo <a name="live-demo"></a>
+## ▶️ Video Demo <a name="live-demo"></a>
 - Checkout the video demo  👉🏽 [here](https://www.loom.com/share/62033487ef224fdfb992d76356d412a6?sid=ab2cd614-9a37-4c34-af4a-fd2130a0bbda)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
