@@ -115,7 +115,7 @@ different screen sizes. It shows two columns on smaller screens.<br>
 - Enjoy the live version of the app 👉🏽 [here](https://image-gallery-inky-psi.vercel.app/)
 
 ## ▶️ Video Demo <a name="live-demo"></a>
-- Checkout the video demo  👉🏽 [here](https://www.loom.com/share/62033487ef224fdfb992d76356d412a6?sid=ab2cd614-9a37-4c34-af4a-fd2130a0bbda)
+- Checkout the video demo  👉🏽 [here](https://www.loom.com/share/7a0076b6ea2a4b1686789f77ddcde36b?sid=bdd0cbf2-72a1-4867-83fb-a4d8ac1e344b)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
