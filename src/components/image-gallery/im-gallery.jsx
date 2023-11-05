@@ -85,7 +85,7 @@ const Gallery = () => {
             className={`${
               index === 0 ? "col-span-2 row-span-2 firstItem " : ""
             } flex justify-center items-center card-container relative ${
-              items.length === 1 ? "animate-bounce" : ""
+              items.length === 1 ? "animate-bounce " : ""
             } `}
             onDragOver={(e) => {
               handleDragOver(e, item.id);
@@ -106,7 +106,7 @@ const Gallery = () => {
           >
             <img
               className={`cardImg  ${
-                index === items.length - 1 ? "max-h-[100px]" : "img"
+                index === items.length - 1 ? "max-h-[4rem]" : "img"
               }`}
               src={item.content}
               alt=""
@@ -128,9 +128,9 @@ const Gallery = () => {
             />
           </div>
         ))}
-        <div className="flex justify-center pt-5">
+        <div className="flex justify-center items-center pt-5">
           <img
-            className="h-14 cursor-pointer animate-bounce hidden"
+            className="h-[4rem] cursor-pointer animate-bounce hidden"
             id="box"
             alt="delete button"
             src={box}
