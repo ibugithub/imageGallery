@@ -8,7 +8,7 @@ import bin from "./assets/bin.png";
 import box from "./assets/box.png";
 
 const Gallery = () => {
-  const { items, setItems, handleDrag, handleDragOver, handleDrop, handleDragEnd } =
+  const { items, setItems, handleDrag, handleDragOver, handleDragEnter, handleDrop, handleDragEnd } =
     DragFunctions();
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -130,7 +130,7 @@ const Gallery = () => {
         ))}
         <div className="flex justify-center pt-5">
           <img
-            className="h-14 cursor-pointer animate-bounce invisible"
+            className="h-14 cursor-pointer animate-bounce hidden"
             id="box"
             alt="delete button"
             src={box}
