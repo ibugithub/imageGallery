@@ -4,15 +4,16 @@ import "./im-gallery.css";
 import { useState } from "react";
 import { DragFunctions } from "./lib/dragFunctions";
 import checkImg from "./assets/check.png";
-import bin from "./assets/box.png";
+import bin from "./assets/bin.png";
+import box from "./assets/box.png";
 
 const Gallery = () => {
-  const { items, setItems, handleDrag, handleDragOver, handleDragEnd } =
+  const { items, setItems, handleDrag, handleDragOver, handleDrop, handleDragEnd } =
     DragFunctions();
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredItem, setHoveredItem] = useState(null);
 
- // Function to handle selecting/deselecting an item
+  // Function to handle selecting/deselecting an item
   const handleClick = (item) => {
     const itemIndex = selectedItems.indexOf(item);
     if (itemIndex === -1) {
@@ -80,11 +81,12 @@ const Gallery = () => {
           <div
             draggable={index === items.length - 1 ? false : true}
             key={item.id}
-            id={item.id}
+            id={index === items.length - 1 ? 'last-el' : item.id}
             className={`${
               index === 0 ? "col-span-2 row-span-2 firstItem " : ""
             } flex justify-center items-center card-container relative ${
-              items.length === 1 ? "animate-bounce" : ""} `}
+              items.length === 1 ? "animate-bounce" : ""
+            } `}
             onDragOver={(e) => {
               handleDragOver(e, item.id);
             }}
@@ -96,7 +98,7 @@ const Gallery = () => {
             }}
             onClick={() => {
               if (items.length === 1) {
-                console.log('last item clicked', items);
+                console.log("last item clicked", items);
                 setSelectedItems(items.slice(0, items.length - 1));
                 window.location.reload();
               }
@@ -126,6 +128,21 @@ const Gallery = () => {
             />
           </div>
         ))}
+        <div className="flex justify-center pt-5">
+          <img
+            className="h-14 cursor-pointer animate-bounce invisible"
+            id="box"
+            alt="delete button"
+            src={box}
+            onClick={handleBin}
+            onDrop={(e) => {
+              handleDrop(e);
+            }}
+            onDragOver={(e, id) => {
+              handleDragOver(e, id);
+            }}
+          />
+        </div>
       </div>
     </>
   );

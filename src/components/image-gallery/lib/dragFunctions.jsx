@@ -21,6 +21,8 @@ export const DragFunctions = () => {
       }
       e.target.classList.add("first-to-other");
     }
+    document.querySelector("#last-el").classList.add("hidden");
+    document.querySelector("#box").classList.remove("invisible");
     e.dataTransfer.effectAllowed = "move";
   };
 
@@ -30,8 +32,7 @@ export const DragFunctions = () => {
     RemoveClass('empty-checkbox');
     dragItem.classList.add("dragging-div");
     const sourceItemId = dragItem.id;
-    const updatedItems = [...items];
-
+    const updatedItems = [...items]; 
     const sourceItem = updatedItems.find((item) => item.id === sourceItemId);
     const targetItem = updatedItems.find((item) => item.id === targetItemId);
     const sourceIndex = updatedItems.indexOf(sourceItem);
@@ -44,6 +45,18 @@ export const DragFunctions = () => {
     }
   };
 
+   // This function handles the Drop of the drag operation
+  const handleDrop = (e) => {
+    if (e.target.id === 'box' ){
+      console.log('source item is', dragItem);
+      console.log('target item is', e.target );
+      // const updatedItems = [...items]
+      const updatedItems = items.filter(item => item.id != dragItem.id);
+      setItems(updatedItems);
+      console.log('updated items are', updatedItems);
+    }
+  };
+
   // This function handles the end of the drag operation
   const handleDragEnd = (e) => {
     RemoveClass('first-to-other dragging-div');
@@ -52,6 +65,8 @@ export const DragFunctions = () => {
       e.target.children[2].classList.add("clicked");
       e.target.children[2].classList.remove("hide");
     }
+    document.querySelector("#box").classList.add("invisible");
+    document.querySelector("#last-el").classList.remove("hidden");
   };
 
   return {
@@ -60,6 +75,7 @@ export const DragFunctions = () => {
     dragItem,
     handleDrag,
     handleDragOver,
+    handleDrop,
     handleDragEnd,
     RemoveClass,
   };
