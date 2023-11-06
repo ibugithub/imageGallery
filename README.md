@@ -68,9 +68,6 @@ grid of images using the CSS Grid layout.<br>
 images to rearrange their positions in the grid.<br>
 This is achieved using HTML5 drag-and-drop functionality.<br>
 
-&#9989; Bouncing Animation: The last card in the<br>
-grid has a bouncing animation effect when clicked.<br>
-
 &#9989; Checkbox Selection: You can click on an<br>
 image to select it. A green checkmark is displayed<br>
 over the selected image.<br>
@@ -84,7 +81,8 @@ images is displayed at the top.<br>
 
 &#9989; Delete Selected Images: You can delete<br>
 selected images by clicking the trash bin icon.<br>
-The selected images are removed from the gallery.<br>
+The selected images are removed from the gallery.
+you can also delete an image by dragging it on the box icon<br>
 
 &#9989; Select All Images: There is an option to<br>
 select all images (except the last one) by clicking<br>
@@ -94,9 +92,6 @@ an empty box in the top left corner.<br>
 to unselect all images (except the last one) by<br>
 clicking a checkbox in the top left corner.<br>
 
-&#9989; Refresh: When the last card is clicked<br>
-(and it is the only one left), the page is refreshed.<br>
-
 &#9989; Hover Effect: Images have a hover effect that<br>
 displays a semi-transparent white background on hover.<br>
 
@@ -105,6 +100,12 @@ with a shadow effect and border-radius.<br>
 
 &#9989; Dynamic Grid: The grid layout adjusts to accommodate<br>
 different screen sizes. It shows two columns on smaller screens.<br>
+
+&#9989; Bouncing Animation: The last card in the<br>
+grid has a bouncing animation effect when clicked.<br>
+
+&#9989; Refresh: When the add-image icon is clicked<br>
+(and it is the only one left), the page is refreshed.<br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
